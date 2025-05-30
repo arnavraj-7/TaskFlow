@@ -16,7 +16,7 @@ const Footer = () => {
           
           {/* GitHub Link */}
           <a
-            href="https://github.com/arnavraj-7/ToDoList"
+            href="https://github.com/arnavraj-7/TaskFlow"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"

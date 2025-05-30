@@ -361,7 +361,7 @@ const App = ({ loaded }) => {
                 ease: easeOut,
                 delay: 0.2,
               }}
-              className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen py-10 px-4"
+              className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen py-10 px-4 font-raleway"
             >
               <div className="w-full max-w-4xl mx-auto">
                 {/* Enhanced Header Section */}

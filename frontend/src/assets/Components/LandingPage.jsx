@@ -30,7 +30,11 @@ const LandingPage = () => {
   ]);
 
   const addTodo = async (todo) => {
-    setTodos((prev) => [todo, ...prev]);
+    const add_todo={
+      ...todo,
+      _id:Math.floor(Math.random() * 1000000)
+    } 
+    setTodos((prev) => [add_todo, ...prev]);
   };
 
   const updateTodo = (_id, todo) => {
@@ -70,7 +74,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
+    <div className="min-h-screen font-raleway bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -167,7 +171,7 @@ const LandingPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 ">
             {/* Left Side - Content */}
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight font-poppins">
                 Simple Todo List
                 <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                   Made Easy

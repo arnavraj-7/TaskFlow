@@ -11,7 +11,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center p-4 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br min-w-screen from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center p-2 md:p-4 relative">
       {/* Animated Background Shapes */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Large floating circles */}
@@ -38,7 +38,7 @@ const LoginPage = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-auto md:w-full max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Branding & Info */}
         <div className="text-center lg:text-left space-y-8">
           {/* Brand Logo/Icon */}
@@ -73,7 +73,7 @@ const LoginPage = () => {
           </div>
 
           {/* Feature Highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+          <div className="md:grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 hidden">
             <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 text-center hover:scale-105 transition-transform duration-300">
               <div className="text-3xl mb-3">⚡</div>
               <h3 className="text-white font-semibold mb-2">Lightning Fast</h3>

@@ -23,7 +23,7 @@ const App = ({ loaded }) => {
     const fetchtodos = async () => {
       try {
         const token = await getToken();
-        console.log(userId+"\n"+useAuth);
+        console.log(user.firstName);
         const res1 = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/todos/create/${userId}/${user?.firstName}`,
           {

@@ -25,7 +25,7 @@ const App = ({ loaded }) => {
         const token = await getToken();
         console.log(userId+"\n"+useAuth);
         const res1 = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/todos/create/${Id}/${user?.firstName}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/todos/create/${userId}/${user?.firstName}`,
           {
             method: "POST",
             headers: {

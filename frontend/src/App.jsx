@@ -5,6 +5,7 @@ import {
   SignOutButton,
   UserButton,
   UserProfile,
+  useUser
 } from "@clerk/clerk-react";
 import { TodoProvider } from "./assets/Contexts/TodoContext.js";
 import TodoForm from "./assets/Components/TodoForm.jsx";
@@ -14,15 +15,17 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 const App = ({ loaded }) => {
   const [todos, setTodos] = useState([]);
   const Navigate = useNavigate();
-  const { getToken, userId, user } = useAuth();
+  const { getToken, userId, } = useAuth();
+  const {user} = useUser();
   const [showUserProfile, setShowUserProfile] = useState(false);
 
   useEffect(() => {
     const fetchtodos = async () => {
       try {
         const token = await getToken();
+        console.log(userId+"\n"+useAuth);
         const res1 = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/todos/create/${userId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/todos/create/${Id}/${user?.firstName}`,
           {
             method: "POST",
             headers: {
@@ -63,9 +66,9 @@ const App = ({ loaded }) => {
       console.log("Fetched todos:", data);
     });
   }, []);
-  useEffect(() => {
-    console.log("Todos state updated:", todos);
-  }, [todos]);
+  // useEffect(() => {
+  //   console.log("Todos state updated:", todos);
+  // }, [todos]);
 
   const addTodo = async (todo) => {
     //Save the todo in the backend

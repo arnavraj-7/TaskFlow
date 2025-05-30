@@ -8,7 +8,7 @@ const router = Router();
 dotenv.config();
 router.use(clerkMiddleware());
 
-router.post("/create/:clerkid",async(req,res)=>{
+router.post("/create/:clerkid/:firstName",async(req,res)=>{
   try{
     const auth = req.auth();
     if(!auth.userId){
@@ -17,12 +17,12 @@ router.post("/create/:clerkid",async(req,res)=>{
       })
       return;
     }
-    const {clerkid}=req.params;
+    const {clerkid,firstName}=req.params;
     const user=await User.findOne({ clerkid:clerkid });
     if(!user){
       await User.create({
         clerkid: clerkid,
-        name: auth.firstName || "Anonymous",
+        name: firstName || "Anonymous",
         todos:[],
       })
       console.log("User created successfully.");

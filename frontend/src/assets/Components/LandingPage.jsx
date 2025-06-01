@@ -83,8 +83,6 @@ const LandingPage = () => {
 
   return (
     <>
-
-    <LoadingScreen />
     <div className="min-h-screen font-raleway bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

@@ -7,6 +7,7 @@ import {
   Menu,
   X,
   ArrowRight,
+  Trophy,
 } from "lucide-react";
 import TodoForm from "./TodoForm";
 import AllToDo from "./AllToDo";
@@ -58,6 +59,14 @@ const LandingPage = () => {
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
+    //send a request to the server to wake it up
+    async function wakeUpServer() {
+      try{
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/init`);
+      }catch(error){
+        console.error("Failed to wake up server:", error);
+      }
+    }
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -72,6 +81,7 @@ const LandingPage = () => {
   const deleteTask = (id) => {
     setDemoTasks((tasks) => tasks.filter((task) => task.id !== id));
   };
+
 
   return (
     <div className="min-h-screen font-raleway bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">

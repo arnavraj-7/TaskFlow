@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { easeIn, easeOut, motion } from "motion/react";
+import { easeIn, easeOut, motion } from "motion/react"; 
 import {
   useAuth,
   SignOutButton,
@@ -11,6 +11,8 @@ import { TodoProvider } from "./assets/Contexts/TodoContext.js";
 import TodoForm from "./assets/Components/TodoForm.jsx";
 import "./index.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { toaster } from "./lib/toastprovider.js";
+
 
 const App = ({ loaded,handleLoading }) => {
   const [todos, setTodos] = useState([]);
@@ -70,6 +72,11 @@ const App = ({ loaded,handleLoading }) => {
   // useEffect(() => {
   //   console.log("Todos state updated:", todos);
   // }, [todos]);
+  useEffect(()=>{
+    if(loaded){
+      toaster("Welcome to TaskFlow! 🚀", "info");
+    }
+  },[loaded])
 
   const addTodo = async (todo) => {
     //Save the todo in the backend
@@ -91,6 +98,7 @@ const App = ({ loaded,handleLoading }) => {
         throw new Error("Failed to add todo");
       }
       const addedTodo = response;
+      toaster("Task added successfully! 🎉", "success");
       setTodos((prev) => [addedTodo, ...prev]);
     } catch (error) {
       console.error("Error adding todo:", error);
@@ -111,6 +119,8 @@ const App = ({ loaded,handleLoading }) => {
       }
     );
     const updatedTodo = await res.json();
+    
+   
     console.log("Updated todo:", updatedTodo);
     setTodos((prev) =>
       prev.map((prevTodo) => (prevTodo._id === _id ? updatedTodo : prevTodo))
@@ -131,6 +141,7 @@ const App = ({ loaded,handleLoading }) => {
       }
     );
     const deletedTodo = await res.json();
+    toaster("Task deleted! 🗑️", "error");
     console.log("Removed todo:", deletedTodo);
   };
 
@@ -152,6 +163,11 @@ const App = ({ loaded,handleLoading }) => {
         }
       );
       updatedTodo = await res.json();
+      if(updatedTodo.Completed){
+        toaster("Task completed! ✅", "purple");
+      }else{
+        toaster("Task marked as pending! ⏳", "info");
+      }
       setTodos((prev) => [
         ...prev.map((todo) => (todo._id === _id ? updatedTodo : todo)),
       ]);
@@ -190,7 +206,7 @@ const App = ({ loaded,handleLoading }) => {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="flex items-center"
                 >
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 cursor-pointer" onClick={()=>Navigate("/")}>
                     <h2 className="text-lg font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                       TaskFlow
                     </h2>

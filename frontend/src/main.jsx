@@ -28,6 +28,7 @@ import LandingPage from "./assets/Components/LandingPage.jsx";
 import { Layout } from "lucide-react";
 import AppWrapper from "./assets/Components/AppWrapper.jsx";
 import LoadingScreen from "./assets/Components/LoadingScreen.jsx";
+import { Toaster } from "sonner";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
             <SignedOut>
               <RedirectToSignIn />
             </SignedOut>
+            
           </>
         }
       >
@@ -67,6 +69,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
+      <Toaster position="top-right"/>
     </ClerkProvider>
   </StrictMode>
 );

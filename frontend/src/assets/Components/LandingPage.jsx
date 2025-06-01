@@ -13,6 +13,7 @@ import TodoForm from "./TodoForm";
 import AllToDo from "./AllToDo";
 import { useNavigate } from "react-router-dom";
 import { TodoProvider } from "../Contexts/TodoContext";
+import LoadingScreen from "./LoadingScreen";
 
 const LandingPage = () => {
   const Navigate = useNavigate();
@@ -84,6 +85,7 @@ const LandingPage = () => {
 
 
   return (
+    <>
     <div className="min-h-screen font-raleway bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -344,6 +346,7 @@ const LandingPage = () => {
       {/* Decorative Bottom Gradient */}
       {/* <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 opacity-30"></div> */}
     </div>
+    </>
   );
 };
 

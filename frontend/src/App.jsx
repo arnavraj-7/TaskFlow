@@ -36,9 +36,9 @@ const App = ({ loaded,handleLoading }) => {
             },
           }
         );
-        await res1.json();
+       const response = await res1.json();
         if (res1.status == 201 || res1.status == 400) {
-          console.log("User creation request sent successfully.");
+          console.log("User creation request sent successfully.",response);
         } else {
           throw new Error("Something went wrong");
         }

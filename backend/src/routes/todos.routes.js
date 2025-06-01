@@ -29,7 +29,7 @@ router.post("/create/:clerkid/:firstName",async(req,res)=>{
       return res.status(201).json({ message: "User created successfully." });
       }
       else{
-        res.status(400).json({
+        res.status(201).json({
           message: "User already exists.",
         });
         return;

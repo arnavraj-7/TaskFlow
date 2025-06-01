@@ -63,7 +63,8 @@ const LandingPage = () => {
     //send a request to the server to wake it up
     async function wakeUpServer() {
       try{
-        await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/init`);
+        const res=await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/init`);
+        console.log("Response:", res.status);
       }catch(error){
         console.error("Failed to wake up server:", error);
       }

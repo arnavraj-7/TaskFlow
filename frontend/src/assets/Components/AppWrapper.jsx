@@ -5,13 +5,13 @@ import Footer from "./Footer";
 
 const AppWrapper = () => {
     const [loaded, setLoaded] = useState(false);
-    function handleLoadingFinish() {
-    setLoaded(true);
+  function handleLoading(){
+    setLoaded(true)
   }
     return(
         <>
-       <App loaded={loaded}/><Footer/>
-       {!loaded?<LoadingScreen onLoadingComplete={handleLoadingFinish} />:""}
+       <App loaded={loaded} handleLoading={handleLoading}/><Footer/>
+       {!loaded?<LoadingScreen />:""}
         </>
     ) 
 };

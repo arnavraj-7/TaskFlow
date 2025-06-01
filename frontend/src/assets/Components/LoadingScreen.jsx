@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const LoadingScreen = ({ isLoading = true, onLoadingComplete }) => {
+const LoadingScreen = ({ isLoading = true }) => {
   const [currentProgress, setCurrentProgress] = useState(0);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [currentStatusIndex, setCurrentStatusIndex] = useState(0);
@@ -54,15 +54,12 @@ const LoadingScreen = ({ isLoading = true, onLoadingComplete }) => {
 
         // Complete loading when progress reaches 100
         if (newProgress >= 100) {
-          setTimeout(() => {
-            onLoadingComplete();
-          }, 1000);
-        }
+         return;}
       }
     }, Math.random() * 800 + 400);
 
     return () => clearTimeout(progressTimer);
-  }, [currentProgress, isLoading, onLoadingComplete]);
+  }, [currentProgress, isLoading]);
 
   // Cycle through loading messages
   useEffect(() => {

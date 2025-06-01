@@ -12,7 +12,7 @@ import TodoForm from "./assets/Components/TodoForm.jsx";
 import "./index.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
-const App = ({ loaded }) => {
+const App = ({ loaded,handleLoading }) => {
   const [todos, setTodos] = useState([]);
   const Navigate = useNavigate();
   const { getToken, userId, } = useAuth();
@@ -55,6 +55,7 @@ const App = ({ loaded }) => {
         if (!data) {
           throw new Error("No data received from the server");
         }
+        handleLoading();
         return data;
       } catch (error) {
         console.error("Error fetching todos:", error);
